@@ -7,10 +7,16 @@ interface IRequest {
 }
 
 class CreateUserUseCase {
-  constructor(private usersRepository: IUsersRepository) {}
+  constructor(private usersRepository: IUsersRepository) {
+    //
+  }
 
   execute({ email, name }: IRequest): User {
-    // Complete aqui
+    const newUser = { email, name };
+
+    const user = this.usersRepository.create(newUser);
+
+    return user;
   }
 }
 
